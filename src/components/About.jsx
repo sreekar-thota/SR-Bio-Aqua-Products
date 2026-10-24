@@ -58,7 +58,9 @@ export default function About() {
           <div className="operations-divider" aria-hidden="true"></div>
           <div className="operations-col">
             <span className="ops-label">Sales Office:</span>
-            <span className="ops-val">Velpur, Tanuku – 534222, West Godavari, Andhra Pradesh</span>
+            <span className="ops-val">
+              {COMPANY_INFO.locations.sales.addressLine1}, {COMPANY_INFO.locations.sales.addressLine2}
+            </span>
           </div>
         </div>
 

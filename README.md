@@ -81,7 +81,7 @@ The site adheres strictly to the specified solid aquaculture color theme. **No g
    - Prominent solid **"Chat on WhatsApp"** button.
    - Verified facility addresses:
      - **Manufacturing Unit:** Plot No. 168, IDA Prashanthi Nagar, Kukatpally, Hyderabad – 500037
-     - **Sales Office:** Velpur, Tanuku – 534222, West Godavari, Andhra Pradesh
+     - **Sales Office:** Velpuru – 534222, Tanuku, West Godavari Dist., Andhra Pradesh
 
 7. **Footer:**
    - Company logo & "Quality Aquaculture Solutions".

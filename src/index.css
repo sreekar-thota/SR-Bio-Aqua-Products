@@ -401,46 +401,117 @@ button {
 .hero-logo-row {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  gap: 1.35rem;
+  margin-bottom: 0;
 }
 
 .hero-logo-img {
-  width: 58px;
-  height: 58px;
+  width: 135px;
+  height: 135px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .hero-company-name {
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: clamp(1.35rem, 2.55vw, 2.2rem);
+  font-weight: 800;
   color: var(--color-primary-dark);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.hero-phone-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: -24px;
+  margin-bottom: 1.35rem;
+}
+
+.hero-phone-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--color-white);
+  background-color: var(--color-secondary-forest);
+  border: 1.5px solid var(--color-secondary-forest);
+  padding: 0.45rem 1.35rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 14px rgba(40, 91, 50, 0.22);
+  transition: all var(--transition-normal);
+  letter-spacing: 0.025em;
+}
+
+.hero-phone-icon {
+  color: #86EFAC;
+  flex-shrink: 0;
+}
+
+.hero-phone-badge:hover,
+.hero-phone-badge:focus-visible {
+  color: var(--color-white);
+  background-color: var(--color-secondary-hover);
+  border-color: var(--color-accent-aqua);
+  box-shadow: 0 6px 16px rgba(40, 91, 50, 0.32);
+  transform: translateY(-1px);
+}
+
+.hero-operations-note {
+  background-color: var(--color-soft-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .hero-operations-note {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hero-operations-note .operations-divider {
+    display: block;
+    width: 1px;
+    height: 32px;
+    background-color: var(--color-border);
+    margin: 0 0.85rem;
+    flex-shrink: 0;
+  }
 }
 
 .hero-main-title {
-  font-size: clamp(2rem, 4.5vw, 3rem);
-  font-weight: 800;
-  color: var(--color-primary-dark);
-  line-height: 1.18;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.75rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+  font-weight: 700;
+  color: var(--color-secondary-forest);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4rem;
 }
 
 .hero-sub-title {
-  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-  font-weight: 600;
-  color: var(--color-secondary-forest);
-  line-height: 1.35;
-  margin-bottom: 1rem;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin-bottom: 0.65rem;
 }
 
 .hero-desc {
   font-size: clamp(0.98rem, 2vw, 1.08rem);
   color: var(--color-text-muted);
   line-height: 1.65;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.35rem;
   max-width: 580px;
 }
 
@@ -505,7 +576,7 @@ button {
   }
 
   .hero-container {
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: 1.25fr 0.75fr;
   }
 }
 
@@ -514,14 +585,48 @@ button {
     padding: 2.75rem 0 2rem;
   }
 
+  .hero-logo-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .hero-company-name {
+    font-size: clamp(1.15rem, 3.8vw, 1.65rem);
+    white-space: nowrap;
+  }
+
+  .hero-phone-center {
+    margin-top: 0.5rem;
+    margin-bottom: 0.85rem;
+  }
+
   .hero-main-title {
-    font-size: clamp(1.85rem, 6.5vw, 2.5rem);
+    font-size: clamp(1.1rem, 3vw, 1.25rem);
   }
 }
 
 @media (max-width: 480px) {
   .nav-actions .btn-enquire-nav {
     display: none;
+  }
+
+  .hero-logo-row {
+    gap: 0.85rem;
+  }
+
+  .hero-logo-img {
+    width: 78px;
+    height: 78px;
+  }
+
+  .hero-phone-center {
+    margin-top: 0.35rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-company-name {
+    font-size: clamp(0.98rem, 4.4vw, 1.3rem);
+    white-space: nowrap;
   }
 
   .brand-title {

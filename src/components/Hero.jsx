@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, PhoneCall } from 'lucide-react';
+import { ArrowRight, PhoneCall, Phone } from 'lucide-react';
 import { COMPANY_INFO } from '../data/company';
 import ClickStack from './ClickStack';
 
@@ -46,17 +46,42 @@ export default function Hero() {
               src="/images/logo.jpeg"
               alt="SR Bio Aqua Products Hexagon Brand Logo"
               className="hero-logo-img"
-              width="64"
-              height="64"
+              width="135"
+              height="135"
             />
-            <span className="hero-company-name">{COMPANY_INFO.name}</span>
+            <h1 className="hero-company-name">{COMPANY_INFO.name}</h1>
+          </div>
+
+          {/* Centered Phone Contact */}
+          <div className="hero-phone-center">
+            <a href="tel:+919959713456" className="hero-phone-badge" aria-label="Call +91 9959713456">
+              <Phone size={16} className="hero-phone-icon" aria-hidden="true" />
+              <span>+91 9959713456</span>
+            </a>
+          </div>
+
+          {/* Operations Address Line */}
+          <div className="hero-operations-note">
+            <div className="operations-col">
+              <span className="ops-label">Manufacturing Unit:</span>
+              <span className="ops-val">
+                {COMPANY_INFO.locations.manufacturing.addressLine1}, {COMPANY_INFO.locations.manufacturing.addressLine2}
+              </span>
+            </div>
+            <div className="operations-divider" aria-hidden="true"></div>
+            <div className="operations-col">
+              <span className="ops-label">Sales Office:</span>
+              <span className="ops-val">
+                {COMPANY_INFO.locations.sales.addressLine1}, {COMPANY_INFO.locations.sales.addressLine2}
+              </span>
+            </div>
           </div>
 
           {/* Main Headline */}
-          <h1 className="hero-main-title">{COMPANY_INFO.mainHeadline}</h1>
+          <h2 className="hero-main-title">{COMPANY_INFO.mainHeadline}</h2>
 
           {/* Supporting Headline */}
-          <h2 className="hero-sub-title">{COMPANY_INFO.supportingHeadline}</h2>
+          <p className="hero-sub-title">{COMPANY_INFO.supportingHeadline}</p>
 
           {/* Description */}
           <p className="hero-desc">{COMPANY_INFO.heroDescription}</p>

@@ -101,8 +101,8 @@ export default function ContactSection() {
             <div className="address-block">
               <h4 className="address-title">Sales Office</h4>
               <p className="address-text">
-                Velpur, Tanuku – 534222<br />
-                West Godavari, Andhra Pradesh
+                {COMPANY_INFO.locations.sales.addressLine1}<br />
+                {COMPANY_INFO.locations.sales.addressLine2}
               </p>
             </div>
             <div className="address-block">

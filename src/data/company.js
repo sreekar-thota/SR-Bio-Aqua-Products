@@ -43,8 +43,8 @@ export const COMPANY_INFO = {
     },
     sales: {
       title: 'Sales Office',
-      addressLine1: 'Velpur, Tanuku – 534222',
-      addressLine2: 'West Godavari, Andhra Pradesh',
+      addressLine1: 'Velpuru – 534222, Tanuku',
+      addressLine2: 'West Godavari Dist., Andhra Pradesh',
       state: 'Andhra Pradesh',
       city: 'Tanuku'
     }
