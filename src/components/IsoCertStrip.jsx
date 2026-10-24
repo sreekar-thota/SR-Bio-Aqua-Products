@@ -82,36 +82,6 @@ export default function IsoCertStrip() {
             </div>
           </div>
 
-          {/* Right Column: Authentic Certificate Preview Thumbnail */}
-          <div className="iso-strip-preview-wrap">
-            <div 
-              className="iso-thumbnail-card"
-              onClick={() => setIsModalOpen(true)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  setIsModalOpen(true);
-                }
-              }}
-              aria-label="Click to enlarge official ISO 9001:2015 certificate"
-            >
-              <img
-                src="/images/iso-certificate.jpg"
-                alt="SR Bio Aqua Products ISO 9001:2015 Certificate of Registration issued by WRG Certifications"
-                className="iso-thumbnail-img"
-                loading="lazy"
-                width="340"
-                height="440"
-              />
-              <div className="iso-thumbnail-overlay">
-                <Eye size={20} aria-hidden="true" />
-                <span>Click to View Full Certificate</span>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
 
