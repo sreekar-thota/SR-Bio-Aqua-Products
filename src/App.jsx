@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import IsoCertStrip from './components/IsoCertStrip';
 import About from './components/About';
+import BrochureSection from './components/BrochureSection';
 import ProductCatalog from './components/ProductCatalog';
 import WhyChooseUs from './components/WhyChooseUs';
 import ReviewsSection from './components/ReviewsSection';
@@ -32,6 +33,9 @@ export default function App() {
 
         {/* 3. About SR Bio Aqua Products */}
         <About />
+
+        {/* Company Brochure Section (PDF) */}
+        <BrochureSection />
 
         {/* 4. View Our Products (Explore Our Products) */}
         <ProductCatalog />
