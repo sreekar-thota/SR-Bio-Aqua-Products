@@ -1,0 +1,198 @@
+/* ==========================================================================
+   ClickStack Component Styles (React Bits Pro Adaptation)
+   Strictly solid colors, NO gradients, fully fluid and mobile responsive
+   ========================================================================== */
+
+.click-stack-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  user-select: none;
+  width: 100%;
+  max-width: var(--card-max-w, 470px);
+  box-sizing: border-box;
+}
+
+.click-stack-container {
+  position: relative;
+  width: 100%;
+  height: var(--card-max-h, 380px);
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.click-stack-container:focus-visible {
+  outline: 2px solid #285B32;
+  outline-offset: 4px;
+  border-radius: 16px;
+}
+
+.click-stack-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #DCE6D9;
+  background-color: #FFFFFF;
+  will-change: transform, opacity;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease;
+}
+
+.click-stack-card.is-top {
+  border-color: #285B32;
+  cursor: pointer;
+}
+
+.click-stack-card.is-top:hover {
+  border-color: #17391C;
+}
+
+/* Card inner content frame */
+.click-stack-hero-frame {
+  width: 100%;
+  height: 100%;
+  padding: 0.75rem;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.click-stack-hero-img {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.click-stack-hero-caption {
+  padding: 0.75rem 0.5rem 0.25rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #4A554A;
+  text-align: center;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+/* ClickStack Bottom Indicator Pill */
+.click-stack-footer {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 14px;
+  background-color: #FFFFFF;
+  border: 1px solid #DCE6D9;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(23, 57, 28, 0.06);
+}
+
+.click-stack-footer:hover {
+  border-color: #285B32;
+  box-shadow: 0 4px 12px rgba(23, 57, 28, 0.12);
+  transform: translateY(-1px);
+}
+
+.click-stack-counter {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #17391C;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.click-stack-counter-slash {
+  color: #8C9E89;
+  font-weight: 500;
+}
+
+.click-stack-counter-total {
+  color: #637560;
+  font-weight: 600;
+}
+
+.click-stack-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #285B32;
+  border-left: 1px solid #DCE6D9;
+  padding-left: 10px;
+}
+
+.click-stack-hint-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #55A86A;
+  border-radius: 50%;
+  display: inline-block;
+  animation: stackPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes stackPulse {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+}
+
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 768px) {
+  .click-stack-wrapper {
+    max-width: min(100%, 420px);
+    margin: 0 auto;
+  }
+
+  .click-stack-container {
+    height: 320px;
+  }
+
+  .click-stack-hero-caption {
+    font-size: 0.82rem;
+    padding: 0.5rem 0.25rem 0.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .click-stack-wrapper {
+    max-width: calc(100% - 16px);
+    margin: 0 auto;
+  }
+
+  .click-stack-container {
+    height: 270px;
+  }
+
+  .click-stack-hero-frame {
+    padding: 0.5rem;
+  }
+
+  .click-stack-hero-img {
+    border-radius: 10px;
+  }
+
+  .click-stack-hero-caption {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.2rem 0.1rem;
+  }
+}
