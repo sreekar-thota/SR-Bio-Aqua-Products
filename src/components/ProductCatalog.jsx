@@ -82,7 +82,7 @@ export default function ProductCatalog() {
                   hoverScale={1}
                   perspective={1000}
                   radius={16}
-                  height={400}
+                  height={450}
                   width="100%"
                   background="#FFFFFF"
                   color="#202820"
@@ -118,19 +118,37 @@ export default function ProductCatalog() {
                         </div>
                       </div>
 
-                      <div className="flip-front-footer">
+                      <div className="card-strip-actions">
                         <button
                           type="button"
-                          className="btn-front-details-link"
+                          className="btn-view-details"
                           onPointerDown={(e) => e.stopPropagation()}
                           onPointerUp={(e) => e.stopPropagation()}
-                          onClick={(e) => handleViewDetails(e, product)}
-                          aria-label={`View full details of ${product.name}`}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleViewDetails(e, product);
+                          }}
+                          aria-label={`View Details for ${product.name}`}
                           id={`btn-view-details-${product.id}`}
                         >
-                          <span>View Full Specifications &bull;</span>
+                          View Details
                         </button>
-                        <span className="flip-card-tap-hint">Tap card to flip</span>
+                        <a
+                          href={getProductWhatsAppUrl(product.name)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-enquire-now"
+                          onPointerDown={(e) => e.stopPropagation()}
+                          onPointerUp={(e) => e.stopPropagation()}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleEnquiryClick(e, product.name);
+                          }}
+                          aria-label={`Enquire Now about ${product.name} on WhatsApp`}
+                          id={`btn-enquire-${product.id}`}
+                        >
+                          Enquire Now
+                        </a>
                       </div>
                     </div>
                   }
@@ -166,6 +184,37 @@ export default function ProductCatalog() {
                         </div>
                       )}
 
+                      <div className="card-strip-actions card-strip-actions--back">
+                        <button
+                          type="button"
+                          className="btn-view-details btn-view-details--back"
+                          onPointerDown={(e) => e.stopPropagation()}
+                          onPointerUp={(e) => e.stopPropagation()}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleViewDetails(e, product);
+                          }}
+                          aria-label={`View Details for ${product.name}`}
+                        >
+                          View Details
+                        </button>
+                        <a
+                          href={getProductWhatsAppUrl(product.name)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-enquire-now btn-enquire-now--back"
+                          onPointerDown={(e) => e.stopPropagation()}
+                          onPointerUp={(e) => e.stopPropagation()}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleEnquiryClick(e, product.name);
+                          }}
+                          aria-label={`Enquire Now about ${product.name} on WhatsApp`}
+                        >
+                          Enquire Now
+                        </a>
+                      </div>
+
                       <div className="flip-back-footer">
                         <span className="flip-back-hint">
                           <RotateCcw size={11} aria-hidden="true" />
@@ -176,25 +225,12 @@ export default function ProductCatalog() {
                   }
                 />
 
-                {/* Reveal Click for More Info button below the card ONLY when flipped */}
-                <div className={`product-card-bottom-action ${isFlipped ? 'is-revealed' : ''}`}>
-                  {isFlipped ? (
-                    <a
-                      href={getProductWhatsAppUrl(product.name)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-more-info btn-revealed-action"
-                      id={`btn-more-info-${product.id}`}
-                      aria-label={`Click for More Info about ${product.name} on WhatsApp`}
-                    >
-                      <RotateCcw size={15} className="btn-icon-spin-subtle" aria-hidden="true" />
-                      <span>Click for More Info</span>
-                    </a>
-                  ) : (
-                    <div className="product-flip-prompt" aria-hidden="true">
-                      <span>Click card to flip for enquiry info</span>
-                    </div>
-                  )}
+                {/* Flip hint below the card */}
+                <div className="product-card-bottom-action">
+                  <div className="product-flip-prompt">
+                    <RotateCcw size={13} aria-hidden="true" />
+                    <span>{isFlipped ? 'Click card to flip back to front' : 'Click card to flip (SR Logo on reverse)'}</span>
+                  </div>
                 </div>
               </div>
             );
