@@ -31,7 +31,7 @@ export const COMPANY_INFO = {
   email: 'sales@srbioaquaproducts.com',
   website: 'https://srbioaquaproducts.com/',
   
-  businessHours: 'Monday – Saturday: 9:00 AM – 6:00 PM (IST)',
+  businessHours: 'Always Available',
   
   locations: {
     manufacturing: {

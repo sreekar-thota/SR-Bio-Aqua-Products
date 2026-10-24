@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, MessageSquare, Clock } from 'lucide-react';
+import { Phone, Mail, Handshake, MessageSquare, Clock } from 'lucide-react';
 import { COMPANY_PHONE, WHATSAPP_NUMBER, COMPANY_INFO } from '../data/company';
 import { getGeneralWhatsAppUrl } from '../data/products';
 
@@ -53,15 +53,16 @@ export default function ContactSection() {
             </a>
           </div>
 
-          {/* Location Card */}
+          {/* Get In Touch Card */}
           <div className="contact-card">
             <div className="contact-icon-box" aria-hidden="true">
-              <MapPin size={22} />
+              <Handshake size={22} />
             </div>
-            <h3 className="contact-card-title">Location</h3>
-            <p className="contact-card-sub">Serving aqua farmers across regions</p>
-            <span className="contact-location-main">Hyderabad</span>
-            <span className="contact-location-detail">Andhra Pradesh &amp; Telangana</span>
+            <h3 className="contact-card-title">Get In Touch</h3>
+            <p className="contact-card-sub">Serving aqua farmers across allover</p>
+            <div className="contact-emoji-box" aria-label="Partnership handshake">
+              <span className="contact-handshake-emoji">🤝</span>
+            </div>
           </div>
 
         </div>
@@ -77,16 +78,27 @@ export default function ContactSection() {
                 Connect directly on WhatsApp for stock availability, pack sizes, and direct farm delivery guidance.
               </p>
             </div>
-            <a 
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-chat-whatsapp"
-              id="contact-whatsapp-chat-btn"
-            >
-              <MessageSquare size={19} aria-hidden="true" />
-              <span>Chat on WhatsApp</span>
-            </a>
+            <div className="contact-action-buttons">
+              <a 
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-chat-whatsapp"
+                id="contact-whatsapp-chat-btn"
+              >
+                <MessageSquare size={19} aria-hidden="true" />
+                <span>Chat on WhatsApp</span>
+              </a>
+              <a 
+                href={`tel:${COMPANY_PHONE.replace(/\s+/g, '')}`}
+                className="contact-phone-white-box"
+                id="contact-phone-call-btn"
+                aria-label={`Call ${COMPANY_PHONE}`}
+              >
+                <Phone size={16} aria-hidden="true" />
+                <span>+91 9959713456</span>
+              </a>
+            </div>
           </div>
 
           {/* Facility & Branch Addresses */}

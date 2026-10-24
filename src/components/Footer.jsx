@@ -76,7 +76,11 @@ export default function Footer() {
               </li>
               <li>
                 <MapPin size={14} aria-hidden="true" />
-                <span>Hyderabad, Telangana &bull; West Godavari, AP</span>
+                <span>Velpuru, Tanuku, West Godavari Dist.</span>
+              </li>
+              <li>
+                <MapPin size={14} aria-hidden="true" />
+                <span>Hyderabad, Telangana</span>
               </li>
             </ul>
           </div>

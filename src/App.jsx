@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import IntroScreen from './components/IntroScreen';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import IsoCertStrip from './components/IsoCertStrip';
 import About from './components/About';
 import ProductCatalog from './components/ProductCatalog';
 import WhyChooseUs from './components/WhyChooseUs';
@@ -25,6 +26,9 @@ export default function App() {
       <main id="main-content">
         {/* 2. Company Introduction / Hero Section */}
         <Hero />
+
+        {/* Professional ISO Certification Strip */}
+        <IsoCertStrip />
 
         {/* 3. About SR Bio Aqua Products */}
         <About />

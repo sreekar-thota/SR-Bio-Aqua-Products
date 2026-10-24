@@ -111,7 +111,14 @@ export default function Hero() {
 
           {/* Verified Quality Indicators */}
           <div className="hero-badges">
-            <span className="hero-badge-pill">✓ ISO &amp; GMP Certified</span>
+            <a 
+              href="#certification" 
+              onClick={(e) => { e.preventDefault(); scrollToSection('certification'); }} 
+              className="hero-badge-pill hero-badge-link" 
+              title="Click to view verified ISO 9001:2015 certification"
+            >
+              ✓ ISO 9001:2015 Certified
+            </a>
             <span className="hero-badge-divider">|</span>
             <span className="hero-badge-pill">✓ CAA Approved</span>
           </div>

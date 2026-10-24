@@ -70,7 +70,7 @@ export default function ProductCatalog() {
 
             return (
               <div key={product.id} className="product-card-container">
-                {/* React Bits FlipCard Component with Action Buttons inside the card strip */}
+                {/* React Bits FlipCard Component */}
                 <FlipCard
                   flipped={isFlipped}
                   onFlipChange={(flipped) => handleFlipChange(product.id, flipped)}
@@ -82,7 +82,7 @@ export default function ProductCatalog() {
                   hoverScale={1}
                   perspective={1000}
                   radius={16}
-                  height={435}
+                  height={400}
                   width="100%"
                   background="#FFFFFF"
                   color="#202820"
@@ -118,30 +118,19 @@ export default function ProductCatalog() {
                         </div>
                       </div>
 
-                      {/* Action buttons inside the front card component strip */}
-                      <div className="card-strip-actions">
+                      <div className="flip-front-footer">
                         <button
                           type="button"
-                          className="btn btn-view-details"
+                          className="btn-front-details-link"
                           onPointerDown={(e) => e.stopPropagation()}
                           onPointerUp={(e) => e.stopPropagation()}
                           onClick={(e) => handleViewDetails(e, product)}
                           aria-label={`View full details of ${product.name}`}
                           id={`btn-view-details-${product.id}`}
                         >
-                          View Details
+                          <span>View Full Specifications &bull;</span>
                         </button>
-                        <button
-                          type="button"
-                          className="btn btn-enquire-now"
-                          onPointerDown={(e) => e.stopPropagation()}
-                          onPointerUp={(e) => e.stopPropagation()}
-                          onClick={(e) => handleEnquiryClick(e, product.name)}
-                          aria-label={`Enquire about ${product.name} on WhatsApp`}
-                          id={`btn-enquire-now-${product.id}`}
-                        >
-                          Enquire Now
-                        </button>
+                        <span className="flip-card-tap-hint">Tap card to flip</span>
                       </div>
                     </div>
                   }
@@ -177,32 +166,6 @@ export default function ProductCatalog() {
                         </div>
                       )}
 
-                      {/* Action buttons inside the back card component strip */}
-                      <div className="card-strip-actions card-strip-actions--back">
-                        <button
-                          type="button"
-                          className="btn btn-view-details btn-view-details--back"
-                          onPointerDown={(e) => e.stopPropagation()}
-                          onPointerUp={(e) => e.stopPropagation()}
-                          onClick={(e) => handleViewDetails(e, product)}
-                          aria-label={`View full details of ${product.name}`}
-                          id={`btn-view-details-back-${product.id}`}
-                        >
-                          View Details
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-enquire-now btn-enquire-now--back"
-                          onPointerDown={(e) => e.stopPropagation()}
-                          onPointerUp={(e) => e.stopPropagation()}
-                          onClick={(e) => handleEnquiryClick(e, product.name)}
-                          aria-label={`Enquire about ${product.name} on WhatsApp`}
-                          id={`btn-enquire-now-back-${product.id}`}
-                        >
-                          Enquire Now
-                        </button>
-                      </div>
-
                       <div className="flip-back-footer">
                         <span className="flip-back-hint">
                           <RotateCcw size={11} aria-hidden="true" />
@@ -212,6 +175,27 @@ export default function ProductCatalog() {
                     </div>
                   }
                 />
+
+                {/* Reveal Click for More Info button below the card ONLY when flipped */}
+                <div className={`product-card-bottom-action ${isFlipped ? 'is-revealed' : ''}`}>
+                  {isFlipped ? (
+                    <a
+                      href={getProductWhatsAppUrl(product.name)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-more-info btn-revealed-action"
+                      id={`btn-more-info-${product.id}`}
+                      aria-label={`Click for More Info about ${product.name} on WhatsApp`}
+                    >
+                      <RotateCcw size={15} className="btn-icon-spin-subtle" aria-hidden="true" />
+                      <span>Click for More Info</span>
+                    </a>
+                  ) : (
+                    <div className="product-flip-prompt" aria-hidden="true">
+                      <span>Click card to flip for enquiry info</span>
+                    </div>
+                  )}
+                </div>
               </div>
             );
           })}
