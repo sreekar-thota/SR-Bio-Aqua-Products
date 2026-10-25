@@ -49,7 +49,8 @@ export default function Hero() {
       id: 'prawn-harvest-cluster',
       image: '/images/vannamei-shrimp-hand-1.jpg',
       alt: 'Healthy harvested Vannamei shrimp cluster in farmer hand',
-      caption: 'High-yield Vannamei culture with SR Bio Aqua solutions'
+      caption: 'High-yield Vannamei culture with SR Bio Aqua solutions',
+      fit: 'contain'
     },
     {
       id: 'prawn-pondside-pair',
