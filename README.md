@@ -104,7 +104,7 @@ Located centrally in [`src/data/products.js`](./src/data/products.js):
 | **AQUA PROBY+** | Probiotics and Pond Health | 500g pouch | `/images/aqua-proby.jpg` |
 | **ZEOLITE Gold Plus** | Water Quality Management | 10 kg bag | `/images/zeolite-gold.jpg` |
 | **Oxy Tab** | Oxygen Supplements | 10 kg bucket | `/images/oxy-tab.jpg` |
-| **Oxy Granules** | Oxygen Supplements | 10 kg bucket | `/images/oxy-granules.jpg` |
+| **Oxy Granules** | Oxygen Supplements | 10 kg bag | `/images/oxy-granules.png` |
 
 All product pack packaging images use `object-fit: contain` so bottles, bags, and buckets are never cropped or stretched.
 

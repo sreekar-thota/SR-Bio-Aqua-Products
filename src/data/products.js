@@ -84,9 +84,9 @@ export const PRODUCTS = [
     id: 'oxy-granules',
     name: 'Oxy Granules',
     category: 'Oxygen Supplements',
-    image: '/images/oxy-granules.jpg',
+    image: '/images/oxy-granules.png',
     description: 'Fast-acting granular oxygen supplement',
-    packSize: '10 kg bucket',
+    packSize: '10 kg bag',
     benefits: [
       'Fast-acting granular oxygen supplement for uniform broadcast',
       'Prevents mass mortalities during night-time or cloudy weather oxygen drops',
