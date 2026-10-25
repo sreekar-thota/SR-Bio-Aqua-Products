@@ -33,18 +33,6 @@ export default function Hero() {
       caption: 'Commercial aquaculture pond management solutions'
     },
     {
-      id: 'prawn-pondside-maroon',
-      image: '/images/vannamei-pondside-maroon.jpg',
-      alt: 'Pond-side fresh Vannamei shrimp harvest',
-      caption: 'High-biomass pond harvest & uniform growth'
-    },
-    {
-      id: 'prawn-two-hands-specimen',
-      image: '/images/vannamei-two-hands-specimen.jpg',
-      alt: 'Superior size grading of Vannamei prawns in farmer hands',
-      caption: 'Superior size grading & clean carapace condition'
-    },
-    {
       id: 'prawn-fresh-lustrous',
       image: '/images/vannamei-fresh-lustrous.jpg',
       alt: 'Lustrous shell quality and vibrant health of harvested shrimp',
@@ -54,7 +42,8 @@ export default function Hero() {
       id: 'prawn-translucent-5',
       image: '/images/vannamei-translucent-5.jpg',
       alt: 'Translucent fresh Vannamei shrimp showing pristine internal organs',
-      caption: 'Pristine gut health & disease resistance'
+      caption: 'Pristine gut health & disease resistance',
+      fit: 'contain'
     },
     {
       id: 'prawn-harvest-cluster',
@@ -66,25 +55,29 @@ export default function Hero() {
       id: 'prawn-pondside-pair',
       image: '/images/vannamei-pondside-pair.jpg',
       alt: 'Pair of prime Vannamei prawns held at pond side',
-      caption: 'Pond-side harvest showing robust growth & vitality'
+      caption: 'Pond-side harvest showing robust growth & vitality',
+      fit: 'contain'
     },
     {
       id: 'prawn-grade-uniform',
-      image: '/images/vannamei-shrimp-hand-4.jpg',
+      image: '/images/vannamei-shrimp-trio.jpg',
       alt: 'Uniform count premium Vannamei shrimp harvest',
-      caption: 'Uniform size count & excellent carapace strength'
+      caption: 'Uniform size count & excellent carapace strength',
+      fit: 'contain'
     },
     {
       id: 'prawn-single-specimen',
       image: '/images/vannamei-shrimp-single.jpg',
       alt: 'Single healthy Vannamei shrimp specimen showing clean gut and shell',
-      caption: 'Clean gut health, disease resistance & vitality'
+      caption: 'Clean gut health, disease resistance & vitality',
+      fit: 'contain'
     },
     {
       id: 'prawn-golden-specimen',
       image: '/images/vannamei-golden-prawn.jpg',
       alt: 'Golden translucent Vannamei prawn specimen',
-      caption: 'Optimal water quality & natural pigment development'
+      caption: 'Optimal water quality & natural pigment development',
+      fit: 'contain'
     }
   ];
 
@@ -98,7 +91,7 @@ export default function Hero() {
           {/* Logo Badge Header */}
           <div className="hero-logo-row">
             <img
-              src="/images/logo.jpeg"
+              src="/images/logo.png"
               alt="SR Bio Aqua Products Hexagon Brand Logo"
               className="hero-logo-img"
               width="135"
@@ -194,12 +187,14 @@ export default function Hero() {
             shadowOpacity={0.12}
             items={heroCards.map((card, i) => (
               <div key={card.id} className="click-stack-hero-frame">
-                <img
-                  src={card.image}
-                  alt={card.alt}
-                  className="click-stack-hero-img"
-                  loading={i === 0 ? 'eager' : 'lazy'}
-                />
+                <div className="click-stack-hero-img-box">
+                  <img
+                    src={card.image}
+                    alt={card.alt}
+                    className={`click-stack-hero-img ${card.fit === 'contain' ? 'fit-contain' : ''}`}
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                  />
+                </div>
                 <div className="click-stack-hero-caption">
                   <span>{card.caption}</span>
                 </div>

@@ -46,7 +46,7 @@ export default function IntroScreen({ onFinish }) {
         {/* Brand Logo with entrance animation */}
         <div className="intro-logo-wrap">
           <img
-            src="/images/logo.jpeg"
+            src="/images/logo.png"
             alt="SR Bio Aqua Products Logo"
             className="intro-logo"
           />

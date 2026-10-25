@@ -24,7 +24,7 @@ export default function ContactSection() {
           {/* Phone Card */}
           <div className="contact-card">
             <div className="contact-icon-box" aria-hidden="true">
-              <Phone size={22} />
+              <Phone size={24} strokeWidth={2.2} />
             </div>
             <h3 className="contact-card-title">Phone</h3>
             <p className="contact-card-sub">Call us for immediate product guidance</p>
@@ -40,7 +40,7 @@ export default function ContactSection() {
           {/* Email Card */}
           <div className="contact-card">
             <div className="contact-icon-box" aria-hidden="true">
-              <Mail size={22} />
+              <Mail size={24} strokeWidth={2.2} />
             </div>
             <h3 className="contact-card-title">Email</h3>
             <p className="contact-card-sub">Send requirements or business queries</p>
@@ -56,13 +56,19 @@ export default function ContactSection() {
           {/* Get In Touch Card */}
           <div className="contact-card">
             <div className="contact-icon-box" aria-hidden="true">
-              <Handshake size={22} />
+              <Handshake size={24} strokeWidth={2.2} />
             </div>
             <h3 className="contact-card-title">Get In Touch</h3>
             <p className="contact-card-sub">Serving aqua farmers across allover</p>
-            <div className="contact-emoji-box" aria-label="Partnership handshake">
-              <span className="contact-handshake-emoji">🤝</span>
-            </div>
+            <a 
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-card-link"
+              aria-label="Connect with us across Andhra Pradesh & Telangana"
+            >
+              Andhra Pradesh &amp; Telangana
+            </a>
           </div>
 
         </div>

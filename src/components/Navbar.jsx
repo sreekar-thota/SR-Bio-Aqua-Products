@@ -45,12 +45,12 @@ export default function Navbar() {
           aria-label="SR Bio Aqua Products Home"
         >
           <img 
-            src="/images/logo.jpeg" 
+            src="/images/logo.png" 
             alt="SR Bio Aqua Products Official Logo" 
             className="brand-logo-img" 
-            width="44"
-            height="44"
-            loading="eager"
+            width="44" 
+            height="44" 
+            loading="eager" 
           />
           <div className="brand-text">
             <span className="brand-title">SR Bio Aqua Products</span>

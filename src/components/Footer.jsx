@@ -27,7 +27,7 @@ export default function Footer() {
           <div className="footer-brand">
             <div className="footer-logo-row">
               <img 
-                src="/images/logo.jpeg" 
+                src="/images/logo.png" 
                 alt="SR Bio Aqua Products Logo" 
                 className="footer-logo-img" 
                 width="40"

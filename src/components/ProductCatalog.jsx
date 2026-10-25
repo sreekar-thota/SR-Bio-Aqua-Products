@@ -82,7 +82,7 @@ export default function ProductCatalog() {
                   hoverScale={1}
                   perspective={1000}
                   radius={16}
-                  height={450}
+                  height={480}
                   width="100%"
                   background="#FFFFFF"
                   color="#202820"
@@ -160,7 +160,7 @@ export default function ProductCatalog() {
 
                       <div className="flip-back-logo-wrap">
                         <img
-                          src="/images/logo.jpeg"
+                          src="/images/logo.png"
                           alt="SR Bio Aqua Products Official Logo"
                           className="flip-back-logo-img"
                         />

@@ -31,7 +31,7 @@ export const PRODUCTS = [
     id: 'aqua-proby',
     name: 'AQUA PROBY+',
     category: 'Probiotics and Pond Health',
-    image: '/images/aqua-proby.jpg',
+    image: '/images/aqua-proby.png',
     description: 'Complete multi-species probiotic for aquaculture ponds',
     packSize: '500g pouch',
     benefits: [
@@ -49,7 +49,7 @@ export const PRODUCTS = [
     id: 'zeolite-gold-plus',
     name: 'ZEOLITE Gold Plus',
     category: 'Water Quality Management',
-    image: '/images/zeolite-gold.jpg',
+    image: '/images/zeolite-gold.png',
     description: 'Natural mineral for ammonia removal and water quality improvement',
     packSize: '10 kg bag',
     benefits: [
@@ -65,11 +65,11 @@ export const PRODUCTS = [
   },
   {
     id: 'oxy-tab',
-    name: 'Oxy Tab',
+    name: 'AQUA Oxy Tab',
     category: 'Oxygen Supplements',
-    image: '/images/oxy-tab.jpg',
+    image: '/images/oxy-tab.png',
     description: 'Immediate oxygen booster for pond water',
-    packSize: '10 kg bucket',
+    packSize: '10 kg bag',
     benefits: [
       'Immediately elevates dissolved oxygen levels in pond water',
       'Prevents mass mortalities from low oxygen emergency',
