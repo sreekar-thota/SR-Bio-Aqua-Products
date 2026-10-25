@@ -229,7 +229,7 @@ export default function ProductCatalog() {
                 <div className="product-card-bottom-action">
                   <div className="product-flip-prompt">
                     <RotateCcw size={13} aria-hidden="true" />
-                    <span>{isFlipped ? 'Click card to flip back to front' : 'Click card to flip (SR Logo on reverse)'}</span>
+                    <span>{isFlipped ? 'Click card to flip back' : 'Click card to flip'}</span>
                   </div>
                 </div>
               </div>

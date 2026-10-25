@@ -25,7 +25,7 @@
 }
 
 .click-stack-container:focus-visible {
-  outline: 2px solid #285B32;
+  outline: 2px solid #4CBB17;
   outline-offset: 4px;
   border-radius: 16px;
 }
@@ -37,7 +37,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border: 1px solid #DCE6D9;
+  border: 1px solid #D7E8CF;
   background-color: #FFFFFF;
   will-change: transform, opacity;
   box-sizing: border-box;
@@ -47,7 +47,7 @@
 }
 
 .click-stack-card.is-top {
-  border-color: #285B32;
+  border-color: #4CBB17;
   cursor: pointer;
 }
 
@@ -93,7 +93,7 @@
   gap: 12px;
   padding: 6px 14px;
   background-color: #FFFFFF;
-  border: 1px solid #DCE6D9;
+  border: 1px solid #D7E8CF;
   border-radius: 9999px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -101,7 +101,7 @@
 }
 
 .click-stack-footer:hover {
-  border-color: #285B32;
+  border-color: #4CBB17;
   box-shadow: 0 4px 12px rgba(23, 57, 28, 0.12);
   transform: translateY(-1px);
 }
@@ -131,15 +131,15 @@
   gap: 6px;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #285B32;
-  border-left: 1px solid #DCE6D9;
+  color: #17391C;
+  border-left: 1px solid #D7E8CF;
   padding-left: 10px;
 }
 
 .click-stack-hint-dot {
   width: 7px;
   height: 7px;
-  background-color: #55A86A;
+  background-color: #4CBB17;
   border-radius: 50%;
   display: inline-block;
   animation: stackPulse 1.8s infinite ease-in-out;

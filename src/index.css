@@ -1,35 +1,35 @@
 /* ==========================================================================
    SR BIO AQUA PRODUCTS - PROFESSIONAL DESIGN SYSTEM
-   Theme: Aquaculture Nature Green (Strictly Solid Colors - NO GRADIENTS)
+   Theme: Aquaculture Kelly Green Brand Palette (Solid Colors - NO GRADIENTS)
    Palette:
-     Primary Dark Green:     #17391C
-     Secondary Forest Green: #285B32
-     Accent Aqua Green:      #55A86A
-     Soft Natural Bg:        #F5F8F2
-     White:                  #FFFFFF
-     Main Text:              #202820
-     Muted Text:             #667166
-     Borders:                #DCE6D9
+     Primary Brand Green (Kelly): #4CBB17
+     Hover Green:                 #3DA313
+     Dark Green (Text/Contrast):  #17391C
+     Light Green Backgrounds:     #F3F9EF
+     White:                       #FFFFFF
+     Subtle Green Borders:        #D7E8CF
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
    1. CSS VARIABLES (:root)
    -------------------------------------------------------------------------- */
 :root {
-  /* Exact Solid Colors */
+  /* Exact Solid Colors - Kelly Green Brand Palette */
+  --color-primary-brand: #4CBB17;
+  --color-primary-brand-hover: #3DA313;
   --color-primary-dark: #17391C;
-  --color-secondary-forest: #285B32;
-  --color-secondary-hover: #1f4726;
-  --color-accent-aqua: #55A86A;
-  --color-accent-hover: #438e55;
-  --color-soft-bg: #F5F8F2;
+  --color-secondary-forest: #4CBB17;     /* Primary brand green: Kelly Green */
+  --color-secondary-hover: #3DA313;      /* Hover green */
+  --color-accent-aqua: #4CBB17;          /* Brand green accent */
+  --color-accent-hover: #3DA313;         /* Hover state */
+  --color-soft-bg: #F3F9EF;              /* Light green backgrounds */
   --color-card-bg: #FFFFFF;
   --color-white: #FFFFFF;
   --color-text-main: #202820;
   --color-text-muted: #667166;
-  --color-border: #DCE6D9;
+  --color-border: #D7E8CF;               /* Subtle green borders */
   --color-border-dark: #17391C;
-  --color-border-focus: #55A86A;
+  --color-border-focus: #4CBB17;
 
   /* WhatsApp Solid Flat Brand Color */
   --color-whatsapp: #25D366;

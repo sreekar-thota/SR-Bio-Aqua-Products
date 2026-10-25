@@ -97,7 +97,7 @@
   color: var(--fc-ink);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border: 1.5px solid #DCE6D9;
+  border: 1.5px solid #D7E8CF;
   display: flex;
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
@@ -120,7 +120,7 @@
   background-color: #17391C;
   color: #FFFFFF;
   transform: rotateY(180deg) translateZ(0);
-  border-color: #285B32;
+  border-color: #4CBB17;
 }
 
 .flip-card[data-axis='x'] .flip-card__face--back {
@@ -129,11 +129,11 @@
 
 /* Subtle crisp hover border highlight with ZERO blur */
 .flip-card:hover .flip-card__face--front {
-  border-color: #55A86A;
+  border-color: #4CBB17;
 }
 
 .flip-card:hover .flip-card__face--back {
-  border-color: #55A86A;
+  border-color: #4CBB17;
 }
 
 /* Glare is disabled for clean solid flat theme */

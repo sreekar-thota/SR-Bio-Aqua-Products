@@ -52,7 +52,7 @@ export default function ProductModal({ product, onClose }) {
               />
             </div>
             <div className="modal-media-pack">
-              <Package size={18} color="#285B32" aria-hidden="true" />
+              <Package size={18} color="#4CBB17" aria-hidden="true" />
               <span>Pack Size: <strong>{product.packSize}</strong></span>
             </div>
             <div className="modal-media-badge">
@@ -70,7 +70,7 @@ export default function ProductModal({ product, onClose }) {
             {product.benefits && product.benefits.length > 0 && (
               <div className="modal-spec-block">
                 <h4 className="modal-spec-heading">
-                  <Check size={18} color="#285B32" aria-hidden="true" />
+                  <Check size={18} color="#4CBB17" aria-hidden="true" />
                   <span>Key Farming Benefits</span>
                 </h4>
                 <ul className="modal-benefits-list">
@@ -88,7 +88,7 @@ export default function ProductModal({ product, onClose }) {
             {product.composition && (
               <div className="modal-spec-block">
                 <h4 className="modal-spec-heading">
-                  <Shield size={18} color="#285B32" aria-hidden="true" />
+                  <Shield size={18} color="#4CBB17" aria-hidden="true" />
                   <span>Verified Composition</span>
                 </h4>
                 <p className="modal-spec-text">{product.composition}</p>
@@ -104,7 +104,7 @@ export default function ProductModal({ product, onClose }) {
             {product.dosage && (
               <div className="modal-spec-block">
                 <h4 className="modal-spec-heading">
-                  <Info size={18} color="#285B32" aria-hidden="true" />
+                  <Info size={18} color="#4CBB17" aria-hidden="true" />
                   <span>Recommended Dosage & Usage</span>
                 </h4>
                 <p className="modal-spec-text">{product.dosage}</p>
@@ -120,7 +120,7 @@ export default function ProductModal({ product, onClose }) {
             {product.storage && (
               <div className="modal-spec-block">
                 <h4 className="modal-spec-heading">
-                  <Package size={18} color="#285B32" aria-hidden="true" />
+                  <Package size={18} color="#4CBB17" aria-hidden="true" />
                   <span>Storage Information</span>
                 </h4>
                 <p className="modal-spec-text">{product.storage}</p>

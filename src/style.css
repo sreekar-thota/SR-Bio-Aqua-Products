@@ -24,14 +24,16 @@
 
 .btn-primary {
   background-color: var(--color-secondary-forest);
-  color: var(--color-white);
+  color: var(--color-primary-dark);
   border: 1px solid var(--color-secondary-forest);
+  font-weight: 700;
 }
 
 .btn-primary:hover,
 .btn-primary:focus-visible {
   background-color: var(--color-secondary-hover);
   border-color: var(--color-secondary-hover);
+  color: var(--color-primary-dark);
 }
 
 .btn-secondary {
@@ -48,22 +50,27 @@
 
 .btn-enquire-nav {
   background-color: var(--color-secondary-forest);
-  color: var(--color-white);
+  color: var(--color-primary-dark);
+  font-weight: 700;
   padding: 0.55rem 1.2rem;
   font-size: 0.9rem;
   border-radius: var(--radius-pill);
+  border: 1px solid var(--color-secondary-forest);
 }
 
 .btn-enquire-nav:hover {
-  background-color: var(--color-accent-aqua);
+  background-color: var(--color-secondary-hover);
+  border-color: var(--color-secondary-hover);
+  color: var(--color-primary-dark);
 }
 
 .btn-more-info {
   background-color: var(--color-secondary-forest);
-  color: var(--color-white);
+  color: var(--color-primary-dark);
   width: 100%;
   min-height: 48px;
   border-radius: var(--radius-md);
+  border: 1px solid var(--color-secondary-forest);
   font-weight: 700;
   font-size: 0.98rem;
   box-shadow: var(--shadow-subtle);
@@ -71,7 +78,9 @@
 
 .btn-more-info:hover,
 .btn-more-info:focus-visible {
-  background-color: var(--color-accent-aqua);
+  background-color: var(--color-secondary-hover);
+  border-color: var(--color-secondary-hover);
+  color: var(--color-primary-dark);
 }
 
 .btn-chat-whatsapp {
@@ -321,27 +330,27 @@
   gap: 0.55rem;
   font-size: 1.12rem;
   font-weight: 800;
-  color: var(--color-white);
+  color: var(--color-primary-dark);
   background-color: var(--color-secondary-forest);
   border: 1.5px solid var(--color-secondary-forest);
   padding: 0.45rem 1.35rem;
   border-radius: var(--radius-md);
-  box-shadow: 0 4px 14px rgba(40, 91, 50, 0.22);
+  box-shadow: 0 4px 14px rgba(76, 187, 23, 0.22);
   transition: all var(--transition-normal);
   letter-spacing: 0.025em;
 }
 
 .hero-phone-icon {
-  color: #86EFAC;
+  color: var(--color-primary-dark);
   flex-shrink: 0;
 }
 
 .hero-phone-badge:hover,
 .hero-phone-badge:focus-visible {
-  color: var(--color-white);
+  color: var(--color-primary-dark);
   background-color: var(--color-secondary-hover);
-  border-color: var(--color-accent-aqua);
-  box-shadow: 0 6px 16px rgba(40, 91, 50, 0.32);
+  border-color: var(--color-secondary-hover);
+  box-shadow: 0 6px 16px rgba(76, 187, 23, 0.32);
   transform: translateY(-1px);
 }
 
@@ -885,7 +894,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-white);
+  color: var(--color-primary-dark);
   margin-bottom: 1.35rem;
   flex-shrink: 0;
 }
@@ -1292,8 +1301,8 @@
   min-height: 40px;
   padding: 0.5rem 0.6rem;
   font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--color-white);
+  font-weight: 700;
+  color: var(--color-primary-dark);
   background-color: var(--color-secondary-forest);
   border: 1.5px solid var(--color-secondary-forest);
   border-radius: var(--radius-md);
@@ -1310,6 +1319,7 @@
 .btn-enquire-now:focus-visible {
   background-color: var(--color-secondary-hover);
   border-color: var(--color-secondary-hover);
+  color: var(--color-primary-dark);
 }
 
 /* Back Face — Solid Dark Green Background (#17391C) */
@@ -1400,7 +1410,7 @@
   align-items: flex-start;
   gap: 0.4rem;
   font-size: 0.74rem;
-  color: #dce6d9;
+  color: #D7E8CF;
   line-height: 1.35;
 }
 
@@ -1431,15 +1441,16 @@
 
 .btn-enquire-now--back {
   background-color: var(--color-secondary-forest);
-  color: var(--color-white);
-  border: 1.5px solid rgba(220, 230, 217, 0.4);
+  color: var(--color-primary-dark);
+  border: 1.5px solid var(--color-secondary-forest);
   font-weight: 700;
 }
 
 .btn-enquire-now--back:hover,
 .btn-enquire-now--back:focus-visible {
-  background-color: #1f4726;
-  border-color: rgba(220, 230, 217, 0.7);
+  background-color: var(--color-secondary-hover);
+  border-color: var(--color-secondary-hover);
+  color: var(--color-primary-dark);
 }
 
 .flip-back-footer {
@@ -1498,7 +1509,7 @@
   width: 100%;
   min-height: 48px;
   background-color: var(--color-secondary-forest);
-  color: var(--color-white);
+  color: var(--color-primary-dark);
   border: 1.5px solid var(--color-secondary-forest);
   border-radius: var(--radius-md);
   font-size: 0.95rem;
@@ -1507,7 +1518,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  box-shadow: 0 4px 12px rgba(23, 57, 28, 0.16);
+  box-shadow: 0 4px 12px rgba(76, 187, 23, 0.22);
   transition: all var(--transition-normal);
   text-decoration: none;
   cursor: pointer;
@@ -1518,8 +1529,9 @@
 .btn-revealed-action:focus-visible {
   background-color: var(--color-secondary-hover);
   border-color: var(--color-secondary-hover);
+  color: var(--color-primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(23, 57, 28, 0.24);
+  box-shadow: 0 6px 16px rgba(76, 187, 23, 0.32);
 }
 
 .btn-icon-spin-subtle {
@@ -1766,7 +1778,7 @@
   width: 100%;
   min-height: 48px;
   background-color: var(--color-secondary-forest);
-  color: var(--color-white);
+  color: var(--color-primary-dark);
   font-weight: 700;
   font-size: 0.98rem;
   border-radius: var(--radius-md);
@@ -1783,6 +1795,7 @@
 .btn-modal-whatsapp:focus-visible {
   background-color: var(--color-secondary-hover);
   border-color: var(--color-secondary-hover);
+  color: var(--color-primary-dark);
 }
 
 .catalog-footer-note {
@@ -1854,7 +1867,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-white);
+  color: var(--color-primary-dark);
   margin-bottom: 1.35rem;
   flex-shrink: 0;
 }
@@ -1977,7 +1990,7 @@
 
 .btn-write-review {
   background-color: var(--color-secondary-forest);
-  color: var(--color-white);
+  color: var(--color-primary-dark);
   padding: 0.75rem 1.6rem;
   font-size: 0.95rem;
   font-weight: 700;
@@ -1995,6 +2008,7 @@
 .btn-write-review:focus-visible {
   background-color: var(--color-secondary-hover);
   border-color: var(--color-secondary-hover);
+  color: var(--color-primary-dark);
 }
 
 .reviews-cards-grid {
@@ -2197,7 +2211,7 @@
   width: 100%;
   min-height: 48px;
   background-color: var(--color-secondary-forest);
-  color: var(--color-white);
+  color: var(--color-primary-dark);
   font-size: 1rem;
   font-weight: 700;
   border-radius: var(--radius-md);
@@ -2213,6 +2227,8 @@
 .btn-submit-review:hover,
 .btn-submit-review:focus-visible {
   background-color: var(--color-secondary-hover);
+  border-color: var(--color-secondary-hover);
+  color: var(--color-primary-dark);
 }
 
 .form-alert-banner {
@@ -2226,9 +2242,9 @@
 }
 
 .form-alert-banner.success {
-  background-color: #E8EFE5;
-  color: var(--color-secondary-forest);
-  border: 1px solid #c2dbbe;
+  background-color: var(--color-soft-bg);
+  color: var(--color-primary-dark);
+  border: 1px solid var(--color-border);
 }
 
 .form-alert-banner.error {
@@ -2238,13 +2254,14 @@
 }
 
 /* --------------------------------------------------------------------------
-   9. CONTACT SECTION (Solid Dark Green Background - Strictly No Gradients)
+   9. CONTACT SECTION (Light Shade of Green Background - Consistent Theme)
    -------------------------------------------------------------------------- */
 .contact-section {
   padding: 4.5rem 0;
-  background-color: var(--color-primary-dark);
-  /* #17391C solid flat color */
-  color: var(--color-white);
+  background-color: var(--color-soft-bg);
+  /* Light shade of green #F3F9EF */
+  color: var(--color-text-main);
+  border-top: 1px solid var(--color-border);
 }
 
 .contact-header {
@@ -2256,14 +2273,14 @@
 .contact-title {
   font-size: clamp(1.85rem, 4vw, 2.5rem);
   font-weight: 800;
-  color: var(--color-white);
+  color: var(--color-primary-dark);
   line-height: 1.2;
   margin-bottom: 0.65rem;
 }
 
 .contact-subtitle {
   font-size: 1.05rem;
-  color: #b8ccbb;
+  color: var(--color-text-muted);
   line-height: 1.6;
 }
 
@@ -2281,47 +2298,49 @@
 }
 
 .contact-card {
-  background-color: #1f4726;
-  /* Solid flat darker forest green */
-  border: 1px solid rgba(220, 230, 217, 0.2);
+  background-color: var(--color-white);
+  border: 1.5px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 1.75rem 1.5rem;
+  padding: 1.85rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: transform var(--transition-normal);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .contact-card:hover {
   transform: translateY(-3px);
-  border-color: var(--color-accent-aqua);
+  border-color: var(--color-secondary-forest);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .contact-icon-box {
-  width: 48px;
-  height: 48px;
-  background-color: #17391C;
+  width: 52px;
+  height: 52px;
+  background-color: var(--color-soft-bg);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(220, 230, 217, 0.25);
+  border: 1.5px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-accent-aqua);
+  color: var(--color-primary-dark);
   margin-bottom: 1rem;
 }
 
 .contact-card-title {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  color: var(--color-white);
-  margin-bottom: 0.25rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.35rem;
 }
 
 .contact-card-sub {
-  font-size: 0.85rem;
-  color: #a3baa7;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
   margin-bottom: 1rem;
+  line-height: 1.45;
 }
 
 .contact-card-link {
@@ -2332,14 +2351,14 @@
   padding: 0 0.75rem;
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--color-accent-aqua);
+  color: var(--color-primary-dark);
   border-radius: var(--radius-sm);
   transition: color var(--transition-normal);
 }
 
 .contact-card-link:hover,
 .contact-card-link:focus-visible {
-  color: var(--color-white);
+  color: var(--color-secondary-forest);
   text-decoration: underline;
 }
 
@@ -2364,13 +2383,14 @@
 
 /* Contact Bottom Box */
 .contact-bottom-box {
-  background-color: #1f4726;
-  border: 1px solid rgba(220, 230, 217, 0.2);
+  background-color: var(--color-white);
+  border: 1.5px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  box-shadow: var(--shadow-card);
 }
 
 .contact-whatsapp-action {
@@ -2380,7 +2400,7 @@
   align-items: center;
   text-align: center;
   padding-bottom: 1.75rem;
-  border-bottom: 1px solid rgba(220, 230, 217, 0.2);
+  border-bottom: 1px solid var(--color-border);
 }
 
 @media (min-width: 768px) {
@@ -2413,15 +2433,15 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: var(--color-white);
-  color: var(--color-secondary-forest);
-  border: 1.5px solid var(--color-white);
+  background-color: var(--color-soft-bg);
+  color: var(--color-primary-dark);
+  border: 1.5px solid var(--color-border);
   font-size: 0.98rem;
   font-weight: 800;
   min-height: 44px;
   padding: 0.65rem 1.4rem;
   border-radius: var(--radius-pill);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+  box-shadow: var(--shadow-subtle);
   transition: all var(--transition-normal);
   letter-spacing: 0.02em;
   text-decoration: none;
@@ -2430,24 +2450,25 @@
 
 .contact-phone-white-box:hover,
 .contact-phone-white-box:focus-visible {
-  background-color: #F5F8F2;
+  background-color: var(--color-secondary-forest);
   color: var(--color-primary-dark);
-  border-color: #F5F8F2;
+  border-color: var(--color-secondary-forest);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 6px 16px rgba(76, 187, 23, 0.25);
 }
 
 .whatsapp-action-heading {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--color-white);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
   margin-bottom: 0.35rem;
 }
 
 .whatsapp-action-sub {
   font-size: 0.95rem;
-  color: #b8ccbb;
+  color: var(--color-text-muted);
   max-width: 600px;
+  line-height: 1.55;
 }
 
 .contact-addresses-grid {
@@ -2471,26 +2492,26 @@
 .address-title {
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--color-accent-aqua);
+  color: var(--color-secondary-forest);
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
 
 .address-text {
-  font-size: 0.9rem;
-  color: #dce6d9;
+  font-size: 0.92rem;
+  color: var(--color-text-main);
   line-height: 1.6;
 }
 
 /* --------------------------------------------------------------------------
-   10. FOOTER
+   10. FOOTER (Light Shade of Green Background - Consistent Theme)
    -------------------------------------------------------------------------- */
 .site-footer {
-  background-color: #112814;
-  /* Solid flat deepest forest green */
-  border-top: 1px solid rgba(220, 230, 217, 0.15);
-  color: #a3baa7;
-  padding: 3rem 0 1.5rem;
+  background-color: var(--color-soft-bg);
+  /* Light shade of green #F3F9EF */
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  padding: 3.5rem 0 1.5rem;
 }
 
 .footer-main-row {
@@ -2498,7 +2519,7 @@
   grid-template-columns: 1fr;
   gap: 2.25rem;
   padding-bottom: 2.5rem;
-  border-bottom: 1px solid rgba(220, 230, 217, 0.1);
+  border-bottom: 1px solid var(--color-border);
 }
 
 @media (min-width: 768px) {
@@ -2515,34 +2536,37 @@
 }
 
 .footer-logo-img {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
+  border-radius: var(--radius-sm);
 }
 
 .footer-brand-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--color-white);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
   display: block;
 }
 
 .footer-brand-tagline {
-  font-size: 0.78rem;
-  color: var(--color-accent-aqua);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-secondary-forest);
   display: block;
 }
 
 .footer-about-text {
-  font-size: 0.88rem;
-  line-height: 1.6;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
   max-width: 420px;
 }
 
 .footer-col-heading {
   font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--color-white);
+  font-weight: 800;
+  color: var(--color-primary-dark);
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -2557,36 +2581,38 @@
 }
 
 .footer-links a {
-  font-size: 0.9rem;
-  color: #a3baa7;
+  font-size: 0.92rem;
+  color: var(--color-text-main);
   transition: color var(--transition-normal);
 }
 
 .footer-links a:hover {
-  color: var(--color-accent-aqua);
+  color: var(--color-secondary-forest);
+  text-decoration: underline;
 }
 
 .footer-contact-list li {
   display: flex;
   align-items: flex-start;
   gap: 0.55rem;
-  font-size: 0.88rem;
-  line-height: 1.4;
-  color: #dce6d9;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--color-text-main);
 }
 
 .footer-contact-list li svg {
   flex-shrink: 0;
   margin-top: 3px;
-  color: var(--color-accent-aqua);
+  color: var(--color-secondary-forest);
 }
 
 .footer-contact-list a {
-  color: #dce6d9;
+  color: var(--color-text-main);
+  transition: color var(--transition-normal);
 }
 
 .footer-contact-list a:hover {
-  color: var(--color-accent-aqua);
+  color: var(--color-secondary-forest);
   text-decoration: underline;
 }
 
@@ -2594,6 +2620,7 @@
   padding-top: 1.5rem;
   text-align: center;
   font-size: 0.85rem;
+  color: var(--color-text-muted);
 }
 
 /* --------------------------------------------------------------------------
