@@ -17,19 +17,74 @@ export default function Hero() {
     }
   };
 
-  // Stack of 2 cards: Prawn image in front, Aqua Pond image behind it
+  // Stack of cards: Real Vannamei prawn harvests, pond culture, and aquaculture management
+  // First card is the healthy vannamei shrimp culture as requested
   const heroCards = [
     {
-      id: 'prawn-card',
+      id: 'prawn-card-primary',
       image: '/images/healthy-vannamei-shrimp.jpg',
       alt: 'Healthy vannamei shrimp culture in clean aquaculture pond',
-      caption: 'Aquaculture pond management solutions'
+      caption: 'Aquaculture pond management & probiotic water care'
     },
     {
       id: 'pond-card',
       image: '/images/hero-aquaculture-pond.jpg',
       alt: 'Commercial shrimp aquaculture pond with aeration systems',
       caption: 'Commercial aquaculture pond management solutions'
+    },
+    {
+      id: 'prawn-pondside-maroon',
+      image: '/images/vannamei-pondside-maroon.jpg',
+      alt: 'Pond-side fresh Vannamei shrimp harvest',
+      caption: 'High-biomass pond harvest & uniform growth'
+    },
+    {
+      id: 'prawn-two-hands-specimen',
+      image: '/images/vannamei-two-hands-specimen.jpg',
+      alt: 'Superior size grading of Vannamei prawns in farmer hands',
+      caption: 'Superior size grading & clean carapace condition'
+    },
+    {
+      id: 'prawn-fresh-lustrous',
+      image: '/images/vannamei-fresh-lustrous.jpg',
+      alt: 'Lustrous shell quality and vibrant health of harvested shrimp',
+      caption: 'Lustrous shell quality, vibrant pigmentation & health'
+    },
+    {
+      id: 'prawn-translucent-5',
+      image: '/images/vannamei-translucent-5.jpg',
+      alt: 'Translucent fresh Vannamei shrimp showing pristine internal organs',
+      caption: 'Pristine gut health & disease resistance'
+    },
+    {
+      id: 'prawn-harvest-cluster',
+      image: '/images/vannamei-shrimp-hand-1.jpg',
+      alt: 'Healthy harvested Vannamei shrimp cluster in farmer hand',
+      caption: 'High-yield Vannamei culture with SR Bio Aqua solutions'
+    },
+    {
+      id: 'prawn-pondside-pair',
+      image: '/images/vannamei-pondside-pair.jpg',
+      alt: 'Pair of prime Vannamei prawns held at pond side',
+      caption: 'Pond-side harvest showing robust growth & vitality'
+    },
+    {
+      id: 'prawn-grade-uniform',
+      image: '/images/vannamei-shrimp-hand-4.jpg',
+      alt: 'Uniform count premium Vannamei shrimp harvest',
+      caption: 'Uniform size count & excellent carapace strength'
+    },
+    {
+      id: 'prawn-single-specimen',
+      image: '/images/vannamei-shrimp-single.jpg',
+      alt: 'Single healthy Vannamei shrimp specimen showing clean gut and shell',
+      caption: 'Clean gut health, disease resistance & vitality'
+    },
+    {
+      id: 'prawn-golden-specimen',
+      image: '/images/vannamei-golden-prawn.jpg',
+      alt: 'Golden translucent Vannamei prawn specimen',
+      caption: 'Optimal water quality & natural pigment development'
     }
   ];
 

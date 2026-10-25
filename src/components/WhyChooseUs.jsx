@@ -1,5 +1,5 @@
 import React from 'react';
-import { PackageCheck, FileText, PhoneCall, HeartHandshake } from 'lucide-react';
+import { PackageCheck, FileCheck, Headset, HandHeart } from 'lucide-react';
 
 export default function WhyChooseUs() {
   const cards = [
@@ -9,17 +9,17 @@ export default function WhyChooseUs() {
       description: 'Formulations developed to address essential pond mineral replenishment, natural bio-remediation, and water condition management.'
     },
     {
-      icon: FileText,
+      icon: FileCheck,
       title: 'Clear Product Information',
       description: 'Transparent composition specifications, verified packaging sizes, and practical dosage recommendations for pond applications.'
     },
     {
-      icon: PhoneCall,
+      icon: Headset,
       title: 'Direct Communication with the Team',
       description: 'Direct phone and WhatsApp access to our team for quick responses to product inquiries, availability, and orders.'
     },
     {
-      icon: HeartHandshake,
+      icon: HandHeart,
       title: 'Support for Aqua Farmers',
       description: 'Committed to serving the day-to-day requirements of fish and shrimp growers across Andhra Pradesh and neighboring regions.'
     }
@@ -43,8 +43,8 @@ export default function WhyChooseUs() {
             const IconComponent = item.icon;
             return (
               <div key={index} className="why-card">
-                <div className="why-icon-box">
-                  <IconComponent size={24} aria-hidden="true" />
+                <div className="why-icon-box" aria-hidden="true">
+                  <IconComponent size={26} strokeWidth={2.2} />
                 </div>
                 <h3 className="why-title">{item.title}</h3>
                 <p className="why-desc">{item.description}</p>

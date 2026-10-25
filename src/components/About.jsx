@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Users, Layers } from 'lucide-react';
+import { ShieldCheck, UsersRound, Layers } from 'lucide-react';
 import { COMPANY_INFO } from '../data/company';
 
 export default function About() {
@@ -7,12 +7,12 @@ export default function About() {
     {
       title: 'Quality-Focused Products',
       description: 'Manufactured with quality ingredients and standard procedures to support dependable pond water and soil conditions.',
-      icon: Shield
+      icon: ShieldCheck
     },
     {
       title: 'Farmer-Centric Support',
       description: 'Direct communication via phone and WhatsApp to help aqua farmers select appropriate products and dosages.',
-      icon: Users
+      icon: UsersRound
     },
     {
       title: 'Solutions for Aquaculture',
@@ -39,8 +39,8 @@ export default function About() {
             const IconComponent = feature.icon;
             return (
               <div key={idx} className="about-feature-card">
-                <div className="feature-icon-box">
-                  <IconComponent size={24} aria-hidden="true" />
+                <div className="feature-icon-box" aria-hidden="true">
+                  <IconComponent size={26} strokeWidth={2.25} />
                 </div>
                 <h3 className="feature-title">{feature.title}</h3>
                 <p className="feature-description">{feature.description}</p>
