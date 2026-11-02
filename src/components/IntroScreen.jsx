@@ -4,15 +4,17 @@ const VIDEO_SRC = '/videos/sr-bio-intro.mp4';
 const STATIC_LOGO_SRC = '/images/logo.png';
 const FADE_DURATION_MS = 600;
 const SAFETY_TIMEOUT_MS = 10000;
-const INTRO_BG_COLOR = '#072615';
+const INTRO_BG_COLOR = '#061f10';
 
 /**
  * Centered SR Bio Aqua Products Logo Reveal Intro Screen.
  * 
  * - Single centered video element with uncropped, pristine animation.
- * - Entire screen and empty side areas filled with a uniform solid dark-green (#072615)
- *   sampled directly from the clean outer background of the original MP4.
- * - Zero duplicated video, zero blur filters, zero enlarged shapes, zero gradients.
+ * - Entire viewport and empty areas filled with uniform solid dark-green (#061f10)
+ *   sampled from the video's outer edges (median: #061f10).
+ * - Controlled subtle scaling on mobile portrait viewports (scale 1.08) within overflow: hidden
+ *   to eliminate top/bottom horizontal bands while preserving the complete hexagonal emblem,
+ *   pink border, and golden lettering.
  * - Replays on every page load and refresh.
  * - Native video onEnded smoothly reveals the homepage over 600ms.
  */

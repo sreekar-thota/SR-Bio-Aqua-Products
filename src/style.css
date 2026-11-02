@@ -2655,7 +2655,7 @@
    SOLID GREEN INTRO SCREEN (SR Bio Aqua Logo Reveal)
    -------------------------------------------------------------------------- */
 :root {
-  --intro-bg-solid: #072615;
+  --intro-bg-solid: #061f10;
 }
 
 .intro-screen-overlay {
@@ -2668,7 +2668,7 @@
   height: 100vh;
   height: 100dvh;
   z-index: 999999;
-  background-color: var(--intro-bg-solid, #072615);
+  background-color: var(--intro-bg-solid, #061f10);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2692,15 +2692,16 @@
 
 .intro-media-wrapper {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   max-width: 100vw;
   max-height: 100vh;
   max-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--intro-bg-solid, #072615);
+  background-color: var(--intro-bg-solid, #061f10);
   margin: 0;
   padding: 0;
   border: none;
@@ -2708,6 +2709,7 @@
   overflow: hidden;
 }
 
+/* Base Desktop & Laptop: Centered original portrait video with solid green sides */
 .intro-video {
   width: auto;
   height: 100%;
@@ -2717,12 +2719,36 @@
   object-fit: contain;
   object-position: center;
   display: block;
-  background-color: var(--intro-bg-solid, #072615);
+  background-color: var(--intro-bg-solid, #061f10);
   margin: 0 auto;
   padding: 0;
   border: none;
   outline: none;
   box-shadow: none;
+  transform: none;
+  transform-origin: center center;
+}
+
+/* Mobile & Portrait screens: Controlled subtle scale to eliminate horizontal bands */
+@media (max-width: 768px), (max-aspect-ratio: 9/16) {
+  .intro-media-wrapper {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .intro-video {
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    max-height: 100dvh;
+    object-fit: contain;
+    object-position: center;
+    /* Controlled uniform zoom (1.08) hides top/bottom boundary without cropping emblem or pink border */
+    transform: scale(1.08);
+    transform-origin: center center;
+  }
 }
 
 /* Fallback static logo presentation */
@@ -2732,7 +2758,7 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background-color: var(--intro-bg-solid, #072615);
+  background-color: var(--intro-bg-solid, #061f10);
   gap: 1.5rem;
   animation: introFadeIn 400ms ease-out forwards;
 }
@@ -2783,7 +2809,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  background-color: rgba(7, 38, 21, 0.92);
+  background-color: rgba(6, 31, 16, 0.92);
   color: #ffffff;
   padding: 0.85rem 1.65rem;
   border-radius: 9999px;
@@ -2802,7 +2828,7 @@
 }
 
 .intro-tap-fallback:hover {
-  background-color: rgba(12, 50, 28, 0.98);
+  background-color: rgba(12, 45, 25, 0.98);
   border-color: rgba(255, 255, 255, 0.6);
   transform: translateX(-50%) scale(1.04);
 }
