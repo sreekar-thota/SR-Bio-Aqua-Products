@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import IntroScreen from './components/IntroScreen';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -12,13 +12,33 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import WhatsAppFloatingButton from './components/WhatsAppFloatingButton';
 
+const INTRO_SESSION_KEY = 'sr_bio_aqua_intro_viewed';
+
+function shouldPlayIntro() {
+  try {
+    return sessionStorage.getItem(INTRO_SESSION_KEY) !== 'true';
+  } catch (err) {
+    // If sessionStorage is restricted or blocked, allow intro to play
+    return true;
+  }
+}
+
 export default function App() {
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(shouldPlayIntro);
+
+  const handleIntroFinish = useCallback(() => {
+    try {
+      sessionStorage.setItem(INTRO_SESSION_KEY, 'true');
+    } catch (err) {
+      // Ignore storage errors in restricted/private browsing modes
+    }
+    setShowIntro(false);
+  }, []);
 
   return (
     <div className="app-root">
-      {/* Intro Screen Animation with Logo & FoldText */}
-      {showIntro && <IntroScreen onFinish={() => setShowIntro(false)} />}
+      {/* Cinematic SR Bio Aqua Products Logo Reveal Video (plays once per session) */}
+      {showIntro && <IntroScreen onFinish={handleIntroFinish} />}
 
       {/* 1. Header and Navigation */}
       <Navbar />
