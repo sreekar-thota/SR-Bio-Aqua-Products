@@ -2686,23 +2686,39 @@
   pointer-events: none;
 }
 
-.intro-media-wrapper {
+/* Background video layer (extends original video atmosphere across entire display) */
+.intro-video-bg {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
   width: 100vw;
   height: 100vh;
   height: 100dvh;
+  object-fit: cover;
+  object-position: center;
+  filter: blur(25px) brightness(0.92);
+  transform: scale(1.08);
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform, filter;
+  opacity: 1;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.intro-media-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+  max-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #061e0f;
-  margin: 0;
-  padding: 0;
-  border: none;
-  outline: none;
+  z-index: 2;
   overflow: hidden;
 }
 
@@ -2713,13 +2729,15 @@
   max-height: 100vh;
   max-height: 100dvh;
   object-fit: contain;
+  object-position: center;
   display: block;
-  background-color: #061e0f;
+  background-color: transparent;
   margin: 0;
   padding: 0;
   border: none;
   outline: none;
   box-shadow: none;
+  z-index: 2;
 }
 
 /* Fallback static logo presentation */

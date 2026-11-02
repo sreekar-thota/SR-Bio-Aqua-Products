@@ -7,24 +7,27 @@ const SAFETY_TIMEOUT_MS = 10000;
 const INTRO_BG_COLOR = '#061e0f';
 
 /**
- * Fullscreen Cinematic Logo Reveal Video Intro Screen for SR Bio Aqua Products.
+ * Fullscreen Cinematic Logo Reveal Video Intro for SR Bio Aqua Products.
  * 
  * Features:
- * - Solid exact-match dark forest-green background (#061e0f) seamlessly blending with the video's edge pixels
- * - 100vw, 100dvh (with 100vh fallback), fixed position, zero padding/margins/borders
- * - object-fit: contain to preserve the complete hexagonal logo and animation uncropped
- * - Auto-plays from time zero on every page load and refresh (no sessionStorage or localStorage restrictions)
- * - Muted autoplay with playsinline for mobile Safari / Android Chrome
- * - Tap-to-play fallback if autoplay is blocked
- * - Fallback to static logo if video fails to load, with manual continue button
- * - Event-driven transition via onEnded with smooth 600ms fade-out
+ * - Dual-layer video presentation:
+ *   1. Fullscreen background layer: object-fit: cover, blurred 25px, extending the video's
+ *      actual dynamic dark-green atmosphere across the entire screen (eliminates desktop side panels).
+ *   2. Foreground center layer: object-fit: contain, preserving the complete uncropped hexagonal
+ *      emblem and pristine animation.
+ * - Synchronized playback of both layers from time zero.
+ * - Replays on every refresh, new tab, or direct visit.
+ * - Smooth 600ms cubic-bezier transition triggered on foreground video onEnded.
+ * - Graceful fallbacks for blocked autoplay (tap-to-play) and network/decode errors (static logo).
+ * - Reduced-motion support displaying the static logo.
  */
 export default function IntroScreen({ onFinish }) {
   const [isFading, setIsFading] = useState(false);
   const [autoplayBlocked, setAutoplayBlocked] = useState(false);
   const [useFallbackLogo, setUseFallbackLogo] = useState(false);
 
-  const videoRef = useRef(null);
+  const fgVideoRef = useRef(null);
+  const bgVideoRef = useRef(null);
   const finishedRef = useRef(false);
   const fallbackTimerRef = useRef(null);
   const fadeTimerRef = useRef(null);
@@ -42,7 +45,7 @@ export default function IntroScreen({ onFinish }) {
     }, FADE_DURATION_MS);
   }, [onFinish]);
 
-  // Primary event: video finished playing naturally
+  // Primary event: foreground video completed
   const handleVideoEnded = useCallback(() => {
     triggerFadeOut();
   }, [triggerFadeOut]);
@@ -56,13 +59,29 @@ export default function IntroScreen({ onFinish }) {
     }, 2000);
   }, [triggerFadeOut]);
 
+  // Keep background video synchronized with foreground video
+  const handleTimeUpdate = useCallback(() => {
+    const fg = fgVideoRef.current;
+    const bg = bgVideoRef.current;
+    if (fg && bg && !fg.paused) {
+      if (Math.abs(fg.currentTime - bg.currentTime) > 0.15) {
+        bg.currentTime = fg.currentTime;
+      }
+    }
+  }, []);
+
   // Tap-to-play fallback if the browser blocks muted autoplay
   const handleUserTapToPlay = useCallback(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.muted = true;
-      video
-        .play()
+    const fg = fgVideoRef.current;
+    const bg = bgVideoRef.current;
+    if (fg) {
+      fg.muted = true;
+      if (bg) {
+        bg.muted = true;
+        bg.currentTime = fg.currentTime;
+        bg.play().catch(() => {});
+      }
+      fg.play()
         .then(() => {
           setAutoplayBlocked(false);
         })
@@ -74,9 +93,8 @@ export default function IntroScreen({ onFinish }) {
   }, [triggerFadeOut]);
 
   useEffect(() => {
-    // Prevent scrolling while intro is playing
+    // Prevent scrolling while intro is active
     document.body.style.overflow = 'hidden';
-    // Set matching background on body to prevent overscroll flash on mobile
     const originalBodyBg = document.body.style.backgroundColor;
     document.body.style.backgroundColor = INTRO_BG_COLOR;
 
@@ -98,18 +116,26 @@ export default function IntroScreen({ onFinish }) {
       };
     }
 
-    // Start video from time zero on every page load
-    const video = videoRef.current;
-    if (video) {
-      video.currentTime = 0;
-      video.muted = true;
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((err) => {
-          console.info('Autoplay blocked by browser policy, presenting tap-to-play prompt:', err);
-          setAutoplayBlocked(true);
-        });
+    // Start both video layers from time zero
+    const fg = fgVideoRef.current;
+    const bg = bgVideoRef.current;
+
+    if (fg) {
+      fg.currentTime = 0;
+      fg.muted = true;
+
+      if (bg) {
+        bg.currentTime = 0;
+        bg.muted = true;
       }
+
+      const pFg = fg.play();
+      const pBg = bg ? bg.play() : Promise.resolve();
+
+      Promise.all([pFg, pBg]).catch((err) => {
+        console.info('Autoplay blocked by browser policy, presenting tap-to-play fallback:', err);
+        setAutoplayBlocked(true);
+      });
     }
 
     // Safety timeout: Ensure visitor is never trapped if video stalls indefinitely
@@ -133,6 +159,27 @@ export default function IntroScreen({ onFinish }) {
       aria-label="SR Bio Aqua Products Introduction"
       onClick={autoplayBlocked ? handleUserTapToPlay : undefined}
     >
+      {/* 1. Fullscreen Blurred Background Layer (extends original video atmosphere across entire display) */}
+      {!useFallbackLogo && (
+        <video
+          ref={bgVideoRef}
+          src={VIDEO_SRC}
+          className="intro-video-bg"
+          autoPlay
+          muted
+          defaultMuted
+          playsInline
+          webkit-playsinline="true"
+          disablePictureInPicture
+          controls={false}
+          loop={false}
+          preload="auto"
+          aria-hidden="true"
+          tabIndex={-1}
+        />
+      )}
+
+      {/* 2. Foreground Center Layer (crisp, uncropped, centered logo animation) */}
       <div className="intro-media-wrapper">
         {useFallbackLogo ? (
           <div className="intro-static-fallback">
@@ -151,7 +198,7 @@ export default function IntroScreen({ onFinish }) {
           </div>
         ) : (
           <video
-            ref={videoRef}
+            ref={fgVideoRef}
             src={VIDEO_SRC}
             className="intro-video"
             autoPlay
@@ -165,6 +212,7 @@ export default function IntroScreen({ onFinish }) {
             preload="auto"
             onEnded={handleVideoEnded}
             onError={handleVideoError}
+            onTimeUpdate={handleTimeUpdate}
           />
         )}
 
