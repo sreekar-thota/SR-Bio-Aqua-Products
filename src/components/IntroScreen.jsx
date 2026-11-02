@@ -2,16 +2,22 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 const VIDEO_SRC = '/videos/sr-bio-intro.mp4';
 const STATIC_LOGO_SRC = '/images/logo.png';
-const FADE_DURATION_MS = 650;
+const FADE_DURATION_MS = 600;
 const SAFETY_TIMEOUT_MS = 10000;
+const INTRO_BG_COLOR = '#061e0f';
 
 /**
- * Cinematic Logo Reveal Video Intro Screen for SR Bio Aqua Products.
+ * Fullscreen Cinematic Logo Reveal Video Intro Screen for SR Bio Aqua Products.
  * 
- * Plays the supplied 5-second logo reveal video on a solid deep forest-green (#17391C)
- * background, preserves aspect ratio with object-fit: contain, handles autoplay policy,
- * reduced-motion preferences, video loading errors, and smoothly transitions into the
- * homepage via onEnded.
+ * Features:
+ * - Solid exact-match dark forest-green background (#061e0f) seamlessly blending with the video's edge pixels
+ * - 100vw, 100dvh (with 100vh fallback), fixed position, zero padding/margins/borders
+ * - object-fit: contain to preserve the complete hexagonal logo and animation uncropped
+ * - Auto-plays from time zero on every page load and refresh (no sessionStorage or localStorage restrictions)
+ * - Muted autoplay with playsinline for mobile Safari / Android Chrome
+ * - Tap-to-play fallback if autoplay is blocked
+ * - Fallback to static logo if video fails to load, with manual continue button
+ * - Event-driven transition via onEnded with smooth 600ms fade-out
  */
 export default function IntroScreen({ onFinish }) {
   const [isFading, setIsFading] = useState(false);
@@ -23,7 +29,7 @@ export default function IntroScreen({ onFinish }) {
   const fallbackTimerRef = useRef(null);
   const fadeTimerRef = useRef(null);
 
-  // Trigger smooth fade-out and transition into homepage
+  // Smooth fade-out transition into homepage
   const triggerFadeOut = useCallback(() => {
     if (finishedRef.current) return;
     finishedRef.current = true;
@@ -43,11 +49,11 @@ export default function IntroScreen({ onFinish }) {
 
   // Handle video loading or decoding error gracefully
   const handleVideoError = useCallback((e) => {
-    console.warn('Video failed to load or play, falling back to static logo:', e);
+    console.warn('Intro video failed to load, falling back to static logo:', e);
     setUseFallbackLogo(true);
     fallbackTimerRef.current = setTimeout(() => {
       triggerFadeOut();
-    }, 1500);
+    }, 2000);
   }, [triggerFadeOut]);
 
   // Tap-to-play fallback if the browser blocks muted autoplay
@@ -61,17 +67,20 @@ export default function IntroScreen({ onFinish }) {
           setAutoplayBlocked(false);
         })
         .catch(() => {
-          // If playback still cannot start, gracefully proceed to homepage
+          // If playback still cannot start, proceed to homepage gracefully
           triggerFadeOut();
         });
     }
   }, [triggerFadeOut]);
 
   useEffect(() => {
-    // Lock body scroll while intro screen is active
+    // Prevent scrolling while intro is playing
     document.body.style.overflow = 'hidden';
+    // Set matching background on body to prevent overscroll flash on mobile
+    const originalBodyBg = document.body.style.backgroundColor;
+    document.body.style.backgroundColor = INTRO_BG_COLOR;
 
-    // Respect user's reduced-motion preference
+    // Check user preference for reduced motion
     const prefersReducedMotion =
       typeof window !== 'undefined' &&
       window.matchMedia &&
@@ -85,17 +94,19 @@ export default function IntroScreen({ onFinish }) {
       return () => {
         if (fallbackTimerRef.current) clearTimeout(fallbackTimerRef.current);
         document.body.style.overflow = 'unset';
+        document.body.style.backgroundColor = originalBodyBg;
       };
     }
 
-    // Programmatic play trigger for reliable autoplay across browsers
+    // Start video from time zero on every page load
     const video = videoRef.current;
     if (video) {
+      video.currentTime = 0;
       video.muted = true;
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch((err) => {
-          console.info('Autoplay prevented by browser, displaying tap-to-play fallback:', err);
+          console.info('Autoplay blocked by browser policy, presenting tap-to-play prompt:', err);
           setAutoplayBlocked(true);
         });
       }
@@ -111,6 +122,7 @@ export default function IntroScreen({ onFinish }) {
       if (fallbackTimerRef.current) clearTimeout(fallbackTimerRef.current);
       if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
       document.body.style.overflow = 'unset';
+      document.body.style.backgroundColor = originalBodyBg;
     };
   }, [triggerFadeOut]);
 
@@ -123,12 +135,19 @@ export default function IntroScreen({ onFinish }) {
     >
       <div className="intro-media-wrapper">
         {useFallbackLogo ? (
-          <div className="intro-static-fallback" onClick={triggerFadeOut}>
+          <div className="intro-static-fallback">
             <img
               src={STATIC_LOGO_SRC}
               alt="SR Bio Aqua Products Logo"
               className="intro-static-logo"
             />
+            <button
+              type="button"
+              className="intro-continue-btn"
+              onClick={triggerFadeOut}
+            >
+              Continue to Website &rarr;
+            </button>
           </div>
         ) : (
           <video
@@ -140,6 +159,9 @@ export default function IntroScreen({ onFinish }) {
             defaultMuted
             playsInline
             webkit-playsinline="true"
+            disablePictureInPicture
+            controls={false}
+            loop={false}
             preload="auto"
             onEnded={handleVideoEnded}
             onError={handleVideoError}
