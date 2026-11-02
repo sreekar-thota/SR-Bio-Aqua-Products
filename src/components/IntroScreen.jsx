@@ -1,27 +1,39 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
-const VIDEO_SRC = '/videos/sr-bio-intro.mp4';
+const DESKTOP_VIDEO_SRC = '/videos/sr-intro-desktop.mp4';
+const MOBILE_VIDEO_SRC = '/videos/sr-intro-mobile.mp4';
 const STATIC_LOGO_SRC = '/images/logo.png';
 const FADE_DURATION_MS = 600;
 const SAFETY_TIMEOUT_MS = 10000;
-const INTRO_BG_COLOR = '#061f10';
+
+function getResponsiveVideoSource() {
+  if (typeof window === 'undefined') return DESKTOP_VIDEO_SRC;
+  return window.innerWidth <= 768 ? MOBILE_VIDEO_SRC : DESKTOP_VIDEO_SRC;
+}
+
+function getMatchingBgColor() {
+  if (typeof window === 'undefined') return '#072515';
+  return window.innerWidth <= 768 ? '#061f10' : '#072515';
+}
 
 /**
- * Centered SR Bio Aqua Products Logo Reveal Intro Screen.
+ * Responsive Dual-Format Intro Screen for SR Bio Aqua Products.
  * 
- * - Single centered video element with uncropped, pristine animation.
- * - Entire viewport and empty areas filled with uniform solid dark-green (#061f10)
- *   sampled from the video's outer edges (median: #061f10).
- * - Controlled subtle scaling on mobile portrait viewports (scale 1.08) within overflow: hidden
- *   to eliminate top/bottom horizontal bands while preserving the complete hexagonal emblem,
- *   pink border, and golden lettering.
- * - Replays on every page load and refresh.
- * - Native video onEnded smoothly reveals the homepage over 600ms.
+ * - Desktop (>= 769px): Dedicated 1920x1080 landscape video (sr-intro-desktop.mp4) with
+ *   a prominent centered emblem and matching solid aquaculture-green background (#072515).
+ * - Mobile (<= 768px): Original portrait video (sr-intro-mobile.mp4) with controlled subtle scale
+ *   (1.08) within overflow: hidden to eliminate top/bottom letterboxing bands while keeping
+ *   the entire emblem and pink border completely safe and uncropped.
+ * - Single source selected on initial mount to avoid restarting during orientation changes.
+ * - Replays on every refresh and fresh visit.
+ * - Smooth 600ms transition triggered by native onEnded event.
  */
 export default function IntroScreen({ onFinish }) {
   const [isFading, setIsFading] = useState(false);
   const [autoplayBlocked, setAutoplayBlocked] = useState(false);
   const [useFallbackLogo, setUseFallbackLogo] = useState(false);
+  // Source is determined once before playback begins; prevents restarting if viewport changes mid-playback
+  const [videoSrc] = useState(getResponsiveVideoSource);
 
   const videoRef = useRef(null);
   const finishedRef = useRef(false);
@@ -76,7 +88,7 @@ export default function IntroScreen({ onFinish }) {
     // Prevent scrolling while intro is active
     document.body.style.overflow = 'hidden';
     const originalBodyBg = document.body.style.backgroundColor;
-    document.body.style.backgroundColor = INTRO_BG_COLOR;
+    document.body.style.backgroundColor = getMatchingBgColor();
 
     // Check user preference for reduced motion
     const prefersReducedMotion =
@@ -150,7 +162,7 @@ export default function IntroScreen({ onFinish }) {
         ) : (
           <video
             ref={videoRef}
-            src={VIDEO_SRC}
+            src={videoSrc}
             className="intro-video"
             autoPlay
             muted
