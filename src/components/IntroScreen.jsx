@@ -4,30 +4,24 @@ const VIDEO_SRC = '/videos/sr-bio-intro.mp4';
 const STATIC_LOGO_SRC = '/images/logo.png';
 const FADE_DURATION_MS = 600;
 const SAFETY_TIMEOUT_MS = 10000;
-const INTRO_BG_COLOR = '#061e0f';
+const INTRO_BG_COLOR = '#072615';
 
 /**
- * Fullscreen Cinematic Logo Reveal Video Intro for SR Bio Aqua Products.
+ * Centered SR Bio Aqua Products Logo Reveal Intro Screen.
  * 
- * Features:
- * - Dual-layer video presentation:
- *   1. Fullscreen background layer: object-fit: cover, blurred 25px, extending the video's
- *      actual dynamic dark-green atmosphere across the entire screen (eliminates desktop side panels).
- *   2. Foreground center layer: object-fit: contain, preserving the complete uncropped hexagonal
- *      emblem and pristine animation.
- * - Synchronized playback of both layers from time zero.
- * - Replays on every refresh, new tab, or direct visit.
- * - Smooth 600ms cubic-bezier transition triggered on foreground video onEnded.
- * - Graceful fallbacks for blocked autoplay (tap-to-play) and network/decode errors (static logo).
- * - Reduced-motion support displaying the static logo.
+ * - Single centered video element with uncropped, pristine animation.
+ * - Entire screen and empty side areas filled with a uniform solid dark-green (#072615)
+ *   sampled directly from the clean outer background of the original MP4.
+ * - Zero duplicated video, zero blur filters, zero enlarged shapes, zero gradients.
+ * - Replays on every page load and refresh.
+ * - Native video onEnded smoothly reveals the homepage over 600ms.
  */
 export default function IntroScreen({ onFinish }) {
   const [isFading, setIsFading] = useState(false);
   const [autoplayBlocked, setAutoplayBlocked] = useState(false);
   const [useFallbackLogo, setUseFallbackLogo] = useState(false);
 
-  const fgVideoRef = useRef(null);
-  const bgVideoRef = useRef(null);
+  const videoRef = useRef(null);
   const finishedRef = useRef(false);
   const fallbackTimerRef = useRef(null);
   const fadeTimerRef = useRef(null);
@@ -45,7 +39,7 @@ export default function IntroScreen({ onFinish }) {
     }, FADE_DURATION_MS);
   }, [onFinish]);
 
-  // Primary event: foreground video completed
+  // Primary event: video finished naturally
   const handleVideoEnded = useCallback(() => {
     triggerFadeOut();
   }, [triggerFadeOut]);
@@ -59,29 +53,13 @@ export default function IntroScreen({ onFinish }) {
     }, 2000);
   }, [triggerFadeOut]);
 
-  // Keep background video synchronized with foreground video
-  const handleTimeUpdate = useCallback(() => {
-    const fg = fgVideoRef.current;
-    const bg = bgVideoRef.current;
-    if (fg && bg && !fg.paused) {
-      if (Math.abs(fg.currentTime - bg.currentTime) > 0.15) {
-        bg.currentTime = fg.currentTime;
-      }
-    }
-  }, []);
-
   // Tap-to-play fallback if the browser blocks muted autoplay
   const handleUserTapToPlay = useCallback(() => {
-    const fg = fgVideoRef.current;
-    const bg = bgVideoRef.current;
-    if (fg) {
-      fg.muted = true;
-      if (bg) {
-        bg.muted = true;
-        bg.currentTime = fg.currentTime;
-        bg.play().catch(() => {});
-      }
-      fg.play()
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+      video
+        .play()
         .then(() => {
           setAutoplayBlocked(false);
         })
@@ -116,26 +94,18 @@ export default function IntroScreen({ onFinish }) {
       };
     }
 
-    // Start both video layers from time zero
-    const fg = fgVideoRef.current;
-    const bg = bgVideoRef.current;
-
-    if (fg) {
-      fg.currentTime = 0;
-      fg.muted = true;
-
-      if (bg) {
-        bg.currentTime = 0;
-        bg.muted = true;
+    // Start video from time zero on every page load
+    const video = videoRef.current;
+    if (video) {
+      video.currentTime = 0;
+      video.muted = true;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.info('Autoplay blocked by browser policy, presenting tap-to-play fallback:', err);
+          setAutoplayBlocked(true);
+        });
       }
-
-      const pFg = fg.play();
-      const pBg = bg ? bg.play() : Promise.resolve();
-
-      Promise.all([pFg, pBg]).catch((err) => {
-        console.info('Autoplay blocked by browser policy, presenting tap-to-play fallback:', err);
-        setAutoplayBlocked(true);
-      });
     }
 
     // Safety timeout: Ensure visitor is never trapped if video stalls indefinitely
@@ -159,27 +129,6 @@ export default function IntroScreen({ onFinish }) {
       aria-label="SR Bio Aqua Products Introduction"
       onClick={autoplayBlocked ? handleUserTapToPlay : undefined}
     >
-      {/* 1. Fullscreen Blurred Background Layer (extends original video atmosphere across entire display) */}
-      {!useFallbackLogo && (
-        <video
-          ref={bgVideoRef}
-          src={VIDEO_SRC}
-          className="intro-video-bg"
-          autoPlay
-          muted
-          defaultMuted
-          playsInline
-          webkit-playsinline="true"
-          disablePictureInPicture
-          controls={false}
-          loop={false}
-          preload="auto"
-          aria-hidden="true"
-          tabIndex={-1}
-        />
-      )}
-
-      {/* 2. Foreground Center Layer (crisp, uncropped, centered logo animation) */}
       <div className="intro-media-wrapper">
         {useFallbackLogo ? (
           <div className="intro-static-fallback">
@@ -198,7 +147,7 @@ export default function IntroScreen({ onFinish }) {
           </div>
         ) : (
           <video
-            ref={fgVideoRef}
+            ref={videoRef}
             src={VIDEO_SRC}
             className="intro-video"
             autoPlay
@@ -212,7 +161,6 @@ export default function IntroScreen({ onFinish }) {
             preload="auto"
             onEnded={handleVideoEnded}
             onError={handleVideoError}
-            onTimeUpdate={handleTimeUpdate}
           />
         )}
 
